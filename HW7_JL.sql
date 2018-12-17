@@ -43,7 +43,7 @@ GROUP BY last_name;
 SELECT last_name, COUNT(*) AS 'number_of_actors'
 FROM actor
 GROUP BY last_name
-HAVING number_of_actors > 1;
+HAVING number_of_actors >= 2;
 
 -- 4c. The actor HARPO WILLIAMS was accidentally entered in the actor table as GROUCHO WILLIAMS. Write a query to fix the record.
 -- select * from actor where last_name IN ('WILLIAMS');
@@ -101,8 +101,8 @@ SELECT *
 FROM
 (SELECT title
 FROM film
-WHERE(title LIKE 'K%' || title LIKE 'Q%')
-&& language_id = 1) AS movies;
+WHERE(title LIKE 'K%' OR title LIKE 'Q%')
+AND language_id = 1) AS movies;
 
 -- 7b. Use subqueries to display all actors who appear in the film Alone Trip.
 SELECT first_name, last_name
